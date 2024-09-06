@@ -73,8 +73,8 @@ public class IcebergIntegrationTestUtil {
   public static void createS3WarehouseBucket(JsonNode config) {
     IcebergCatalogConfig catalogConfig = icebergCatalogConfigFactory.fromJsonNodeConfig(config);
     AmazonS3 client = ((S3Config) catalogConfig.getStorageConfig()).getS3Client();
-    Bucket bucket = client.createBucket(WAREHOUSE_BUCKET_NAME);
-    LOGGER.info("Created s3 bucket: {}", bucket.getName());
+    // Bucket bucket = client.createBucket(WAREHOUSE_BUCKET_NAME);
+    // LOGGER.info("Created s3 bucket: {}", bucket.getName());
     List<Bucket> buckets = client.listBuckets();
     LOGGER.info("All s3 buckets: {}", buckets);
   }

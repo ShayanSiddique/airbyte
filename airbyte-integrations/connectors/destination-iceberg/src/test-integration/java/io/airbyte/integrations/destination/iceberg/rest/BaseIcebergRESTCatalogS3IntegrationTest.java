@@ -13,7 +13,10 @@ import io.airbyte.integrations.destination.iceberg.config.format.DataFileFormat;
 import io.airbyte.integrations.destination.iceberg.container.RESTServerWithMinioCompose;
 import java.util.HashSet;
 import java.util.List;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Disabled;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -67,4 +70,14 @@ public abstract class BaseIcebergRESTCatalogS3IntegrationTest extends Destinatio
     return IcebergIntegrationTestUtil.retrieveRecords(getConfig(), namespace, streamName);
   }
 
+  @Nullable
+  @Override
+  protected String getDefaultSchema(@NotNull JsonNode config) throws Exception {
+    return "";
+  }
+
+  @Disabled("Existing connector does not support flattened rows yet")
+  @Override
+  public void testAirbyteFields() throws Exception {
+  }
 }

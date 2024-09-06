@@ -48,7 +48,7 @@ public class RESTServerWithMinioCompose extends DockerComposeContainer<RESTServe
             .withExposedService(MINIO_SERVICE_NAME,
                 MinioContainer.MINIO_PORT,
                 Wait.forHttp(MinioContainer.HEALTH_ENDPOINT).withStartupTimeout(Duration.ofSeconds(60)))
-            .withLocalCompose(true);
+            .withLocalCompose(false);
   }
 
   @Override
@@ -61,11 +61,13 @@ public class RESTServerWithMinioCompose extends DockerComposeContainer<RESTServe
   }
 
   public String s3Endpoint() {
-    return "http://localhost:" + getServicePort(MINIO_SERVICE_NAME, MINIO_PORT);
+    // return "http://localhost:" + getServicePort(MINIO_SERVICE_NAME, MINIO_PORT);
+    return "http://localhost:" + MINIO_PORT;
   }
 
   public String restServerUri() {
-    return "http://localhost:" + getServicePort(REST_SERVICE_NAME, REST_SERVER_PORT);
+    // return "http://localhost:" + getServicePort(REST_SERVICE_NAME, REST_SERVER_PORT);
+    return "http://localhost:" + REST_SERVER_PORT;
   }
 
   public JsonNode getComposeConfig(DataFileFormat fileFormat) {
