@@ -2,7 +2,7 @@
 
 ## Sync overview
 
-The LinkedIn Pages source only supports Full Refresh for now. Incremental Sync will be coming soon.
+For Getting LinkedIn Pages source only supports Full Refresh for now. Incremental Sync will be coming soon.
 
 Airbyte uses [LinkedIn Marketing Developer Platform - API](https://docs.microsoft.com/en-us/linkedin/marketing/integrations/marketing-integrations-overview) to fetch data from LinkedIn Pages.
 
